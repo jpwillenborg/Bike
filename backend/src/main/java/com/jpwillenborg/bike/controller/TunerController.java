@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/tune")
-@CrossOrigin(origins = {"http://localhost:5176", "https://bike.jpwillenborg.com"})
+@RequestMapping("/api/v1/tuner")
 public class TunerController {
 
     private final BikeRepository bikeRepository;
