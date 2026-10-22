@@ -64,8 +64,9 @@ export default function MtbTuner() {
         
         setSavedBikes(combinedGarage);
         if (combinedGarage.length > 0) {
-          setResults(combinedGarage[0]);
-          setForkPsiOverride(combinedGarage[0].forkPsi);
+          const firstBike = combinedGarage[0];
+          setResults(firstBike);
+          setForkPsiOverride(firstBike.forkPsi);
         }
       } else {
         setSavedBikes(INITIAL_MOCK_GARAGE);
