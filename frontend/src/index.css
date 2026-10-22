@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+@theme {
+  --color-portfolio-bg: #090d16;
+  --color-portfolio-panel: #111823;
+  --color-portfolio-panel-hover: #141e2e;
+  --color-portfolio-accent: #00e5ff;
+  --color-portfolio-accent-light: #33ebff;
+  --color-primary: #ffffff;
+  --color-secondary: #a0aec0;
+  --color-muted: #4a5568;
+
+  --spacing-section-top: 5rem;
+  --spacing-section-bottom: 5rem;
+  --spacing-panel: 3rem;
+
+  --animate-bounce: bounce 3s infinite;
+
+  --shadow-elevated-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  --shadow-elevated-btn: 0 4px 14px rgba(0, 229, 255, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #090d16;
+  color: #a0aec0;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.015em;
+  overflow-x: hidden;
+}
+
+@utility focus-ring {
+  focus-visible: outline-none;
+  focus-visible: ring-1;
+  focus-visible: ring-white/20;
+  border-radius: 4px;
+}
+
+@utility btn-primary {
+  inline-flex: ;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  padding-inline: 1.75rem;
+  padding-video: 0.625rem;
+  background-color: var(--color-portfolio-accent);
+  color: var(--color-portfolio-bg);
+  transition-property: all;
+  transition-duration: 200ms;
+  text-decoration-line: none;
+  text-align: center;
+  cursor: pointer;
+  @apply focus-ring;
+  &:hover {
+    background-color: rgba(0, 229, 255, 0.75);
+  }
+  &:active {
+    background-color: rgba(0, 229, 255, 0.60);
+  }
+}
+
+@utility btn-secondary {
+  inline-flex: ;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  padding-inline: 1.75rem;
+  padding-video: 0.625rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-primary);
+  transition-property: all;
+  transition-duration: 200ms;
+  text-decoration-line: none;
+  text-align: center;
+  cursor: pointer;
+  @apply focus-ring;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.10);
+    color: var(--color-portfolio-accent);
+  }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.20);
+  }
+}
+
+@utility portfolio-panel-card {
+  background-color: var(--color-portfolio-panel);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.01);
+  box-shadow: var(--shadow-elevated-card);
+  text-align: left;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  &:hover {
+    background-color: var(--color-portfolio-panel-hover);
+  }
+  @media (min-width: 768px) {
+    padding: 3rem;
+  }
+}
+
+@utility section-description {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  letter-spacing: 0.015em;
+}
+
+@media (max-width: 767px) {
+  #hero {
+    padding-bottom: 2px !important;
+  }
+  #tuning-workbench {
+    padding-top: 100px !important;
+    padding-bottom: 80px !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    overflow-y: auto !important;
+  }
+  .app-shell {
+    zoom: 0.88;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 114vh !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  body {
+    overflow-y: auto !important;
+  }
+  .app-shell {
+    zoom: 0.92;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 109vh !important;
+  }
+}
+
+.portfolio-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.portfolio-scrollbar::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+.portfolio-scrollbar::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 10px;
+}
+
+.portfolio-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #00e5ff;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.recharts-wrapper * {
+  outline: none !important;
+}
