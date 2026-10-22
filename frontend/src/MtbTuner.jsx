@@ -51,24 +51,32 @@ export default function MtbTuner() {
       const response = await fetch(getApiUrl('/api/v1/tuner/bikes'));
       if (response.ok) {
         const data = await response.json();
+        const combinedGarage = [...INITIAL_MOCK_GARAGE];
+        
         if (data && data.length > 0) {
-          const combinedGarage = [...INITIAL_MOCK_GARAGE];
           data.forEach(dbBike => {
             const exists = combinedGarage.some(b => b.name === dbBike.name && b.weight === dbBike.weight);
             if (!exists) {
               combinedGarage.push(dbBike);
             }
           });
-          setSavedBikes(combinedGarage);
-        } else {
-          setSavedBikes(INITIAL_MOCK_GARAGE);
+        }
+        
+        setSavedBikes(combinedGarage);
+        if (combinedGarage.length > 0) {
+          setResults(combinedGarage[0]);
+          setForkPsiOverride(combinedGarage[0].forkPsi);
         }
       } else {
         setSavedBikes(INITIAL_MOCK_GARAGE);
+        setResults(INITIAL_MOCK_GARAGE[0]);
+        setForkPsiOverride(INITIAL_MOCK_GARAGE[0].forkPsi);
       }
     } catch (err) {
       console.error('Failed to load bikes from database', err);
       setSavedBikes(INITIAL_MOCK_GARAGE);
+      setResults(INITIAL_MOCK_GARAGE[0]);
+      setForkPsiOverride(INITIAL_MOCK_GARAGE[0].forkPsi);
     }
   };
 
@@ -98,12 +106,21 @@ export default function MtbTuner() {
         const next = prev.filter(b => b.id !== id);
         return next.length > 0 ? next : INITIAL_MOCK_GARAGE;
       });
-      if (results && results.id === id) { setResults(null); setForkPsiOverride(0); }
+      if (results && results.id === id) { 
+        setResults(INITIAL_MOCK_GARAGE[0]); 
+        setForkPsiOverride(INITIAL_MOCK_GARAGE[0].forkPsi); 
+      }
       return;
     }
     try {
       const response = await fetch(getApiUrl(`/api/v1/tuner/bikes/${id}`), { method: 'DELETE' });
-      if (response.ok) { fetchBikes(); if (results && results.id === id) { setResults(null); setForkPsiOverride(0); } }
+      if (response.ok) { 
+        fetchBikes(); 
+        if (results && results.id === id) { 
+          setResults(INITIAL_MOCK_GARAGE[0]); 
+          setForkPsiOverride(INITIAL_MOCK_GARAGE[0].forkPsi); 
+        } 
+      }
     } catch (err) { console.error(err); }
   };
 

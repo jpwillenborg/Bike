@@ -41,7 +41,7 @@ export default function TargetAnalyticsCard({ results, forkPsiOverride, setForkP
               <p className="text-base text-white uppercase font-bold tracking-widest mt-1 mb-0">{results ? results.name : 'UNASSIGNED'}</p>
             </div>
             
-            <p className="text-xs text-secondary bg-[#090d16] border border-white/[0.03] p-4 rounded-xl leading-relaxed h-[85px] overflow-hidden mt-4 m-0 flex-shrink-0 font-sans">
+            <p className="text-xs text-secondary bg-[#090d16] border border-white/[0.03] p-4 rounded-xl leading-relaxed h-auto min-h-[85px] md:h-[85px] flex items-center mt-4 m-0 flex-shrink-0 font-sans">
               {getSetupSummary()}
             </p>
           </div>
