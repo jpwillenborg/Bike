@@ -48,7 +48,7 @@ export default function MtbTuner() {
 
   const fetchBikes = async () => {
     try {
-      const response = await fetch(getApiUrl('/api/v1/tune/bikes'));
+      const response = await fetch(getApiUrl('/api/v1/tuner/bikes'));
       if (response.ok) {
         const data = await response.json();
         if (data && data.length > 0) {
@@ -79,7 +79,7 @@ export default function MtbTuner() {
     setError('');
     const activeBrandLabel = TOP_CHASSIS_BRANDS.find(b => b.id === name)?.label || 'Custom Platform';
     try {
-      const response = await fetch(getApiUrl('/api/v1/tune/calculate'), {
+      const response = await fetch(getApiUrl('/api/v1/tuner/calculate'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: activeBrandLabel, weight: parseFloat(weight), ridingStyle, forkType, shockType }),
@@ -102,7 +102,7 @@ export default function MtbTuner() {
       return;
     }
     try {
-      const response = await fetch(getApiUrl(`/api/v1/tune/bikes/${id}`), { method: 'DELETE' });
+      const response = await fetch(getApiUrl(`/api/v1/tuner/bikes/${id}`), { method: 'DELETE' });
       if (response.ok) { fetchBikes(); if (results && results.id === id) { setResults(null); setForkPsiOverride(0); } }
     } catch (err) { console.error(err); }
   };
